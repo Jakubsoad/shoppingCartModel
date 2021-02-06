@@ -3,3 +3,6 @@
 
 # Tests
 /report
+
+/.idea
+.phpunit.result.cache
