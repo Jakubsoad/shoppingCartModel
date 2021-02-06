@@ -1,5 +1,3 @@
-# Zadanie rekrutacyjne
-
 Stwórz obiektowy mechanizm (model) koszyka zakupowego w oparciu o testy (TDD).
  Twoim zadaniem jest napisanie klas: `Product` (_produkt_), `Item` (_pozycja w
  koszyku_), `Cart` (_koszyk_) oraz `Order` (_zamówienie_). Dodatkowe wytyczne:
