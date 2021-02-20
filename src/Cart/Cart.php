@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Recruitment\Cart;
 
@@ -9,6 +10,10 @@ use Recruitment\Cart\Exception\QuantityTooLowException;
 use Recruitment\Entity\Order;
 use Recruitment\Entity\Product;
 
+/**
+ * Class Cart
+ * @package Recruitment\Cart
+ */
 class Cart
 {
     /** @var int */
@@ -89,7 +94,7 @@ class Cart
      * @param int $id
      * @return Order
      */
-    public function checkout(int $id)
+    public function checkout(int $id): Order
     {
         $order = new Order($id, $this->items, $this);
         $this->items = [];
@@ -114,13 +119,11 @@ class Cart
      * @param Product $product
      * @throws Exception
      */
-    public function removeProduct(Product $product)
+    public function removeProduct(Product $product): void
     {
-        $productExisted = false;
         foreach ($this->items as $key => $item) {
             if (($item->getProduct() === $product)) {
                 unset($this->items[$key]);
-                $productExisted = true;
             }
         }
         $this->items = array_values($this->items);
@@ -131,7 +134,7 @@ class Cart
      * @param int $quantity
      * @throws QuantityTooLowException
      */
-    public function setQuantity(Product $product, int $quantity)
+    public function setQuantity(Product $product, int $quantity): void
     {
         $productExisted = false;
         foreach ($this->items as $item) {

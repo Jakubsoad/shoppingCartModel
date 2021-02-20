@@ -1,11 +1,16 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Recruitment\Cart;
 
 use Recruitment\Cart\Exception\QuantityTooLowException;
 use Recruitment\Entity\Product;
 
+/**
+ * Class Item
+ * @package Recruitment\Cart
+ */
 class Item
 {
     /** @var int */

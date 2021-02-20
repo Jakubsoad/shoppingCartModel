@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Recruitment\Entity;
 
@@ -64,21 +65,10 @@ class Order
         $this->cart = $cart;
     }
 
-
     /**
-     * @return int
+     * @return int[]
      */
-    public function getTotalPrice(): int
-    {
-        $totalPrice = 0;
-        foreach ($this->items as $item) {
-            $totalPrice += $item->getTotalPrice();
-        }
-
-        return $totalPrice;
-    }
-
-    public function getDataForView()
+    public function getDataForView(): array
     {
         $dataForView = [ 'id' => $this->id ];
         for ($i = 0; $i < count($this->items); $i++) {
@@ -91,5 +81,18 @@ class Order
         $dataForView['total_price'] = $this->getTotalPrice();
 
         return $dataForView;
+    }
+
+    /**
+     * @return int
+     */
+    private function getTotalPrice(): int
+    {
+        $totalPrice = 0;
+        foreach ($this->items as $item) {
+            $totalPrice += $item->getTotalPrice();
+        }
+
+        return $totalPrice;
     }
 }
